@@ -1,14 +1,8 @@
 const express=require("express")
-const router=express.Router()
-const app=express()
-const {verificationsignup}=require("../controller/admincontroller")
+const signupcontroller=require("../controller/signup")
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json())
+const router= express.Router()
 
-router.route("/")
-.post(verificationsignup)
+router.post("/register",signupcontroller.createuser)
 
-
-
-module.exports=router
+module.exports=router;

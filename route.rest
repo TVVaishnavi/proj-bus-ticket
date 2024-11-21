@@ -1,13 +1,14 @@
-
-
-POST http://localhost:3000/login/
+post http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "name": "vaishnavi",
-    "email": "vaishumahesh21@gmail.com",
-    "Password": "akbarali"
+  "email": "admin@test.com",
+  "password": "admin"
 }
 
+
 ###
-get http://localhost:3000/
+GET http://localhost:3000/api/users
+Content-Type: application/json
+
+header:{"key":"Authorization",}

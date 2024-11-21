@@ -1,14 +1,12 @@
 const express=require("express")
+const cors=require("cors")
+const{login,refreshToken}=require("../controller/login")
+
 const router=express.Router()
-const app=express()
-const {verificationlogin}=require("../controller/admincontroller")
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json())
+router.use(cors())
 
-router.route("/")
-.post(verificationlogin)
-
-
+router.post("/login",login)
+router.post("/refresh-token",refreshToken)
 
 module.exports=router

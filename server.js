@@ -1,31 +1,24 @@
 const express=require("express")
 const app=express()
-const PORT=3000;
-const signup=require("./Routes/signup")
-const login=require("./Routes/login")
-// mongoose
-const mongoose=require('mongoose')
-mongoose.connect('mongodb://localhost:27017/appdb')
-const UserSchema = new mongoose.Schema({
-    name:String
-})
-const usermodel=mongoose.model("user",UserSchema)
+const PORT=process.env.PORT||3000
+const cors=require("cors")
+const signupRouter=require("./Routes/signup")
+const bodyParser = require("body-parser")
+const createAdminAccount=require("./script/admin")
+const loginRouter=require("./Routes/login")
+const userRouter=require("./Routes/user")
 
-app.get("/",(req,res)=>{
-    usermodel.find().then((user)=>{
-        res.json(user)
-        console.log(user)
-    }).catch((err)=>{
-        console.log(err)
-    })
-})
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json())
 
-app.use("/signup",signup)
-app.use("/login",login)
+app.use(bodyParser.json())
+app.use(cors())
 
-app.listen(PORT, ()=>{
-    console.log(`Server Running ${PORT}`);
+createAdminAccount()
+
+app.use("/user",signupRouter)
+app.use("/auth",loginRouter)
+app.use("/api",userRouter)
+
+app.listen(PORT,  ()=>{
+    console.log('server is running')
 })
