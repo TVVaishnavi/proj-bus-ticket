@@ -7,6 +7,7 @@ const bodyParser = require("body-parser")
 const createAdminAccount=require("./script/admin")
 const loginRouter=require("./Routes/login")
 const userRouter=require("./Routes/user")
+const busRouter=require("./Routes/bus")
 
 
 
@@ -17,7 +18,7 @@ createAdminAccount()
 
 app.use("/user",signupRouter)
 app.use("/auth",loginRouter)
-app.use("/api",userRouter)
+app.use("/api",userRouter,busRouter)
 
 app.listen(PORT,  ()=>{
     console.log('server is running')

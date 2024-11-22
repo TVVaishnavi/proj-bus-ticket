@@ -2,6 +2,7 @@ post http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
+  ""
   "email": "admin@test.com",
   "password": "admin"
 }
@@ -12,3 +13,20 @@ GET http://localhost:3000/api/users
 Content-Type: application/json
 
 header:{"key":"Authorization",}
+
+###
+post http://localhost:3000/api/user
+Content-Type: application/json
+
+{
+    "busNumber": "TN01A1234",
+    "stopings": ["Villupuram", "Trichy"],
+    "arrival": "Chennai",
+        "depature": "Madurai",
+        "departuretime": "08:00 AM",
+        "arivetime": "02:00 PM",
+        "totalSeat":40,
+        "avaiableSeat":40,
+        "inAC":true,
+        "date":"11/12/2078"
+}

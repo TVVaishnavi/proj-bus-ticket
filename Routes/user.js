@@ -7,6 +7,7 @@ const router=express.Router()
 
 router.use(cors())
 
-router.get("/users",authMiddleware.authenticateToken,userController.getUser)
+router.route("/user")
+     .get(authMiddleware.authenticateToken,userController.getUser)
 
 module.exports=router
