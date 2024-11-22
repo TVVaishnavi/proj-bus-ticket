@@ -30,3 +30,12 @@ Content-Type: application/json
         "inAC":true,
         "date":"11/12/2078"
 }
+
+
+###
+get http://localhost:3000/api/bus/ticket
+Content-Type: application/json
+
+{
+  "email":"ganesh@gmail.com"
+}

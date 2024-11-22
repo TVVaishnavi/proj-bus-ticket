@@ -50,4 +50,6 @@ const getbusdetails=async()=>{
         return data
 }
 
+
+
 module.exports={createbus,updatebus,getbusdetails}

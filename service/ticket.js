@@ -26,6 +26,20 @@ const addelemnts=(set,count)=>{
     return set
 }
 
+const addseat=(seat,count)=>{
+    for(i=0;i<count.length;i++){
+        seat.push(count[i])
+    }
+    return seat
+}
+
+const removebookedseat=(seat,count)=>{
+    for(i=0;i<count.length;i++){
+        seat.remove(count[i])
+    }
+    return seat
+}
+
 const bookticket=async(ticketdetails,date,avaiableSeat)=>{
     const {
         busNumber,
@@ -67,5 +81,26 @@ const updatebusticket=async(count,busNumber)=>{
         console.log(err)
     }
 }
+const canacelticket=async(ticketdetails)=>{
+    try {
+        const busNumber=ticketdetails.busNumber
+        const busdetails=await buses.findOne({busNumber})
+        const seatcount=ticketdetails.seatnumber
+        const seatupdate={
+            avaiableSeat:addseat(busdetails.avaiableSeat,seatcount),
+            bookedseat:removebookedseat(busdetails.bookedseat,seatcount)
+        }
+        const updatebus=busservice.updatebus(seatupdate,busdetails)
+        const bus=await buses.findOneAndUpdate({busNumber},{$set:updatebus})
+        console.log("bus seats are updated",bus)
+    } catch (error) {
+        
+    }
+}
+const getalltickets=async()=>{
+    const data = await ticket.find({})
+    return data
+}
 
-module.exports={bookticket,updatebusticket}
+
+module.exports={bookticket,updatebusticket,canacelticket,getalltickets}

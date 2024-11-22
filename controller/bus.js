@@ -7,7 +7,6 @@ const createbus=async(req,res)=>{
      try {
         const busdata=req.body
         const busNumber=busdata.busNumber
-        console.log("hdgh")
         const existingbus=await buses.findOne({busNumber})
        if(existingbus){
           res.json({"message":"bus already existed"})
@@ -78,5 +77,7 @@ const searchbus=async(req,res)=>{
 
    }
 }
+
+
 
 module.exports={createbus,deletebus,updatebus,getbusdetails,searchbus}
