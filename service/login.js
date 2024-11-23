@@ -36,5 +36,5 @@ const refreshToken=async(oldToken)=>{
 }
 
 module.exports={
-    login
+    login,refreshToken
 }
