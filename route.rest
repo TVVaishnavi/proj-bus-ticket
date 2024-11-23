@@ -39,3 +39,14 @@ Content-Type: application/json
 {
   "email":"ganesh@gmail.com"
 }
+
+###
+post http://localhost:3000/user/register
+Content-Type: application/json
+
+{
+   "name":"Akbar ali",
+    "email":"akabar123@gmail.com",
+    "password":"vaishu",
+    "role":"customer"
+}
