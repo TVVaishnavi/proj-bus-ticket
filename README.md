@@ -7,9 +7,8 @@
    1. [Installation](#installation)
    2. [Usage](#usage)
    3. [Technologies Used](#technologies-used)
-   4. [Configuration](#configuration)
-   5. [Database Setup](#database-setup)
-   6. [Running Tests](#running-tests)
+   4. [Database Setup](#database-setup)
+   5. [Running Tests](#running-tests)
 
 ## Installation 
    1. Create a folder on the desktop and open the folder in the vscode.
