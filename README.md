@@ -5,10 +5,9 @@
 
 ## Table of Content:
    1. [Installation](#installation)
-   2. [Usage](#usage)
-   3. [Technologies Used](#technologies-used)
-   4. [Database Setup](#database-setup)
-   5. [Running Tests](#running-tests)
+   2. [Technologies Used](#technologies-used)
+   3. [Database Setup](#database-setup)
+   4. [Running Tests](#running-tests)
 
 ## Installation 
    1. Create a folder on the desktop and open the folder in the vscode.
