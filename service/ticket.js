@@ -71,8 +71,8 @@ const updatebusticket=async(count,busNumber)=>{
         const busdetails=await buses.findOne({busNumber})
         const seatcount=seatarrangements(count,busdetails.avaiableSeat)
         const seatupdate={
-            avaiableSeat:removelemnts(busdetails.avaiableSeat,seatcount),
-            bookedseat:addelemnts(busdetails.bookedseat,seatcount)
+            avaiableSeat:removelemnts(busdetails.avaiableSeat,seatcount).sort(),
+            bookedseat:addelemnts(busdetails.bookedseat,seatcount).sort()
         }
         const updatebus=busservice.updatebus(seatupdate,busdetails)
         const bus=await buses.findOneAndUpdate({busNumber},{$set:updatebus})
@@ -87,8 +87,8 @@ const canacelticket=async(ticketdetails)=>{
         const busdetails=await buses.findOne({busNumber})
         const seatcount=ticketdetails.seatnumber
         const seatupdate={
-            avaiableSeat:addseat(busdetails.avaiableSeat,seatcount),
-            bookedseat:removebookedseat(busdetails.bookedseat,seatcount)
+            avaiableSeat:addseat(busdetails.avaiableSeat,seatcount).sort(),
+            bookedseat:removebookedseat(busdetails.bookedseat,seatcount).sort()
         }
         const updatebus=busservice.updatebus(seatupdate,busdetails)
         const bus=await buses.findOneAndUpdate({busNumber},{$set:updatebus})
