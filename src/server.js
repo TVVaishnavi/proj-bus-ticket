@@ -4,7 +4,7 @@ const PORT=process.env.PORT||3000
 const cors=require("cors")
 const signupRouter=require("./Routes/signup")
 const bodyParser = require("body-parser")
-const createAdminAccount=require("./script/admin")
+const createAdminAccount=require("./admin")
 const loginRouter=require("./Routes/login")
 const userRouter=require("./Routes/user")
 const busRouter=require("./Routes/bus")
@@ -19,9 +19,8 @@ app.use(logger)
 
 createAdminAccount()
 
-app.use("/user",signupRouter)
-app.use("/auth",loginRouter)
-app.use("/api",userRouter,busRouter)
+app.use("/",signupRouter)
+app.use("/auth",loginRouter,userRouter,busRouter)
 
 
 app.use(blocker)
